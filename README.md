@@ -4,6 +4,8 @@ This is a simple project I made using **Nuxt 3** and **Vuetify** where users can
 
 ![Preview](./public/screenshot.png)
 ![Preview](./public/Screenshot2.png)
+![Preview](./public/Screenshot3.png)
+
 
 ---
 

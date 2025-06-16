@@ -17,7 +17,7 @@ const date = ref(null)
 const time = ref(null)
 const timeMenu = ref(false)
 
-// Compute combined value
+//combine both value
 const combinedDateTime = computed(() => {
   if (props.mode === 'date') return date.value
 

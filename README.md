@@ -1,20 +1,11 @@
-Sure! Here's your complete, clean `README.md` content — just copy and paste it into your `README.md` file:
-
-````markdown
 # 📅 Nuxt 3 + Vuetify Date & Time Picker
 
-This is a simple project I made using **Nuxt 3** and **Vuetify**.  
-Users can select a **date** and **time**, and see the selected value formatted nicely below.
+This is a simple project I made using **Nuxt 3** and **Vuetify** where users can select a date and time, and see the selected value formatted below.
 
----
+![Preview](./public/screenshot.png)
+![Preview](./public/Screenshot2.png)
+![Preview](./public/Screenshot3.png)
 
-## Preview
-
-> Make sure the images are inside your `/public` folder.
-
-![Date Picker](./public/screenshot.png)  
-![Time Picker](./public/Screenshot2.png)  
-![Formatted Output](./public/Screenshot3.png)
 
 ---
 
@@ -26,7 +17,6 @@ Users can select a **date** and **time**, and see the selected value formatted n
 npx nuxi init datetime-input-demo
 cd datetime-input-demo
 npm install
-````
 
 ### 2. Install Vuetify
 
@@ -50,6 +40,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     components: {
       ...components,
       ...labs,
+      VDateInput, 
+      VTimePicker,
     },
     directives,
     ssr: true,
@@ -59,14 +51,4 @@ export default defineNuxtPlugin((nuxtApp) => {
 })
 ```
 
-### 4. Import Styles Globally
 
-In `app.vue` or root setup:
-
-```vue
-<script setup>
-import 'vuetify/styles'
-</script>
-```
-
----

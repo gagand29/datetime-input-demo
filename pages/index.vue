@@ -28,7 +28,7 @@ const formatted = computed(() => {
     <div class="flex flex-col items-center gap-3 text-center mb-8">
       <h1 class="text-3xl font-extrabold text-gray-800 flex items-center gap-3">
         <span class="text-blue-500">📅</span>
-        <span>Schedule Your Event</span>
+        <span> Schedule Your Event</span>
       </h1>
       <p class="text-md text-blue-600 font-semibold mt-2 px-4 py-2 bg-blue-50 rounded-lg shadow-sm">
         {{ formatted }}
@@ -45,7 +45,7 @@ const formatted = computed(() => {
           color="blue-lighten-1"
           class="mb-6 rounded-lg"
           clearable
-          prepend-inner-icon="mdi-calendar"
+      
         />
 
         <v-menu v-model="timeMenu" :close-on-content-click="false" transition="scale-transition">

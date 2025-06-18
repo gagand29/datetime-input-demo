@@ -2,10 +2,9 @@
 
 This is a simple project I made using **Nuxt 3** and **Vuetify** where users can select a date and time, and see the selected value formatted below.
 
-![Preview](./public/screenshot.png)
-![Preview](./public/Screenshot2.png)
-![Preview](./public/Screenshot3.png)
-
+![Preview](./public/screenshot11.png)
+![Preview](./public/Screenshot12.png)
+![Preview](./public/Screenshot13.png)
 
 ---
 
@@ -13,7 +12,7 @@ This is a simple project I made using **Nuxt 3** and **Vuetify** where users can
 
 ### 1. Create Nuxt App
 
-```bash
+````bash
 npx nuxi init datetime-input-demo
 cd datetime-input-demo
 npm install
@@ -22,33 +21,31 @@ npm install
 
 ```bash
 npm install vuetify
-```
+````
 
 ### 3. Create Vuetify Plugin
 
 In `plugins/vuetify.ts`, I added:
 
 ```ts
-import { createVuetify } from 'vuetify'
-import * as components from 'vuetify/components'
-import * as labs from 'vuetify/labs/components'
-import * as directives from 'vuetify/directives'
-import 'vuetify/styles'
+import { createVuetify } from "vuetify";
+import * as components from "vuetify/components";
+import * as labs from "vuetify/labs/components";
+import * as directives from "vuetify/directives";
+import "vuetify/styles";
 
 export default defineNuxtPlugin((nuxtApp) => {
   const vuetify = createVuetify({
     components: {
       ...components,
       ...labs,
-      VDateInput, 
+      VDateInput,
       VTimePicker,
     },
     directives,
     ssr: true,
-  })
+  });
 
-  nuxtApp.vueApp.use(vuetify)
-})
+  nuxtApp.vueApp.use(vuetify);
+});
 ```
-
-

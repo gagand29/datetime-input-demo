@@ -47,7 +47,7 @@ const { handleSubmit } = useForm({
     date: yup
       .date()
       .typeError("Invalid format: YYYY-MM-DD HH:mm")
-      .required("Date/time is required"),
+      .required("Date/time is required and must follow the format YYYY-MM-DD HH:mm"),
   }),
 });
 

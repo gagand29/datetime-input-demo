@@ -37,7 +37,8 @@ const dateRules = yup
 </script>
 
 <style scoped>
-.dp-error input {
+::v-deep(.dp-error .dp__input) {
   border-color: #f87171 !important;
+  border-width: 2px;
 }
 </style>

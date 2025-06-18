@@ -1,5 +1,7 @@
 <template>
-  <div class="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4 py-8">
+  <div
+    class="min-h-screen bg-gray-50 flex flex-col items-center justify-center px-4 py-8"
+  >
     <!-- Header -->
     <div class="flex flex-col items-center gap-2 text-center mb-8">
       <h1 class="text-3xl font-extrabold text-gray-800 flex items-center gap-3">
@@ -19,7 +21,7 @@
     <Form
       :validation-schema="schema"
       @submit="onSubmit"
-      class="bg-white rounded-2xl p-8 shadow-lg w-full max-w-md border border-gray-100 flex flex-col items-center"
+      class="bg-white rounded-2xl p-8 shadow-lg w-full max-w-md flex flex-col items-center"
     >
       <DateTimeInput v-model="selectedDate" />
       <button

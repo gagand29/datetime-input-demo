@@ -2,9 +2,9 @@
 
 This is a simple project I made using **Nuxt 3** and **Vuetify** where users can select a date and time, and see the selected value formatted below.
 
-![Preview](./public/Screenshot11.png)
-![Preview](./public/Screenshot12.png)
-![Preview](./public/Screenshot13.png)
+![Preview](./public/S1.png)
+![Preview](./public/S2.png)
+![Preview](./public/S3.png)
 
 ---
 

@@ -1,86 +1,43 @@
 <template>
-  <div class="datetime-input max-w-md mx-auto">
-    <VueDatePicker
-      v-model="internal"
-      mode="dateTime"
-      :text-input="true"
-      :format="format"
-      placeholder="YYYY-MM-DD HH:mm"
-      clearable
-      :class="{ 'border-red-500': !!error }"
-      @text-input="onTextInput"
-      @update:model-value="onUpdate"
-    />
-    <p class="text-xs text-gray-500 mt-1">
-      Format: <span class="font-mono">YYYY-MM-DD HH:mm</span> (e.g., 2024-12-25
-      14:30)
-    </p>
+  <div class="datetime-input max-w-md mx-auto w-full">
+    <Field name="date" :rules="dateRules" v-slot="{ field, errors, meta }">
+      <VueDatePicker
+        v-model="field.value"
+        mode="dateTime"
+        :format="format"
+        placeholder="YYYY-MM-DD HH:mm"
+        clearable
+        text-input
+        class="w-full"
+        :class="{ 'dp-error': meta.touched && errors.length }"
+      />
+
+      <p v-if="meta.touched && errors[0]" class="text-red-600 text-sm mt-1 font-semibold">
+        {{ errors[0] }}
+      </p>
+      <p v-else class="text-xs text-gray-500 mt-1">
+        Format: <span class="font-mono">{{ format }}</span> (e.g., 2024-12-25 14:30)
+      </p>
+    </Field>
   </div>
 </template>
 
 <script setup>
-import { ref, watch } from "vue";
-
-const props = defineProps({
-  modelValue: {
-    type: Date,
-    default: null,
-  },
-});
-const emit = defineEmits(["update:modelValue"]);
+import { Field } from "vee-validate";
+import * as yup from "yup";
+import VueDatePicker from "@vuepic/vue-datepicker";
+import "@vuepic/vue-datepicker/dist/main.css";
 
 const format = "yyyy-MM-dd HH:mm";
-const internal = ref(props.modelValue);
-const rawInput = ref("");
-const error = ref("");
 
-function onTextInput(value, isValid) {
-  rawInput.value = value;
-  if (!value) {
-    error.value = "";
-    emit("update:modelValue", null);
-    return;
-  }
-  if (!isValid) {
-    error.value =
-      "Invalid format. Use: YYYY-MM-DD HH:mm (e.g., 2024-12-25 14:30)";
-    emit("update:modelValue", null);
-  } else {
-    error.value = "";
-  }
-}
-
-function onUpdate(val) {
-  error.value = "";
-  rawInput.value = formatVal(val);
-  emit("update:modelValue", val);
-}
-
-watch(
-  () => props.modelValue,
-  (v) => {
-    rawInput.value = v ? formatVal(v) : "";
-    internal.value = v;
-    error.value = "";
-  }
-);
-
-function formatVal(dt) {
-  if (!dt) return "";
-  const yyyy = dt.getFullYear();
-  const MM = String(dt.getMonth() + 1).padStart(2, "0");
-  const dd = String(dt.getDate()).padStart(2, "0");
-  const HH = String(dt.getHours()).padStart(2, "0");
-  const mm = String(dt.getMinutes()).padStart(2, "0");
-  return `${yyyy}-${MM}-${dd} ${HH}:${mm}`;
-}
+const dateRules = yup
+  .date()
+  .typeError(`Invalid format: ${format}`)
+  .required("Date/time is required");
 </script>
 
 <style scoped>
-.datetime-input input {
-  transition: border 0.2s, box-shadow 0.2s;
-}
-.datetime-input input:focus {
-  outline: none;
+.dp-error input {
+  border-color: #f87171 !important;
 }
 </style>
